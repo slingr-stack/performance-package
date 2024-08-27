@@ -23,20 +23,19 @@ timing.clear();
 timing.start('querying-data');
 let orders = sys.data.find('orders', queryParams);
 timing.end('querying-data');
-timing.log('querying-data');
 
 while (orders.hasNext()) {
     let order = orders.next();
     timing.start('processing-orders');
     app.orders.process(order);
-    timing.end('processing-orders');
+    timing.end('processing-orders', {log: false});
 }
 timing.log('processing-orders');
 ```
 
-When you call `start(timerName)` the timer is started and it is ended when you call `end(timerName)`. You can log the total time using `log(timerName)`. It will log into the console if you are running it in the console or will log it in the monitor otherwise.
+When you call `start(name)` the timer is started and it is ended when you call `end(name)`. By default, it will log the time when you end the timer. It will log it in the console if you are running the script from the console, or will log it in the app monitor otherwise. If you don't want to log it, you can use `end(name, {log: false)`.
 
-Keep in mind that if you call `start` and `end` several times with the same time name, the total time will be added. You can clear a timer using `clear(timerName)` or clear all timers using `clear()`.
+Keep in mind that if you call `start` and `end` several times with the same time name, the total time will be added. You can clear a timer using `clear(name)` or clear all timers using `clear()`.
 
 # About Slingr
 

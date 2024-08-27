@@ -11,13 +11,13 @@ exports.start = function(name) {
 exports.end = function(name, options) {
     options = options || {};
     endTimes[name] = new Date();
-    let d = diff(name);
+    let d = pkg.performance.timing.diff(name);
     if (typeof totals[name] === 'undefined') {
         totals[name] = 0;
     }
     totals[name] += d;
     if (typeof options.log === 'undefined' || options.log) {
-        logTotal(name);
+        pkg.performance.timing.log(name);
     }
 };
 
@@ -31,9 +31,9 @@ exports.log = function(name) {
 
 exports.clear = function(name) {
     if (name) {
-        startTimes[name] = null;
-        endTimes[name] = null;
-        totals[name] = null;
+        delete startTimes[name];
+        delete endTimes[name];
+        delete totals[name];
     } else {
         startTimes = {};
         endTimes = {};

@@ -1,0 +1,14 @@
+{
+    "name": "performance",
+    "label": "Performance",
+    "dependencies": [],
+    "configuration": [],
+    "events": [],
+    "metadata": [
+        {
+            "type": "script",
+            "namespace": "api",
+            "path": "/scripts/timing.js"
+        }
+    ]
+}

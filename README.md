@@ -23,7 +23,7 @@ timing.clear();
 timing.start('querying-data');
 let orders = sys.data.find('orders', queryParams);
 timing.end('querying-data');
-timing.logTotal('querying-data');
+timing.log('querying-data');
 
 while (orders.hasNext()) {
     let order = orders.next();
@@ -31,10 +31,10 @@ while (orders.hasNext()) {
     app.orders.process(order);
     timing.end('processing-orders');
 }
-timing.logTotal('processing-orders');
+timing.log('processing-orders');
 ```
 
-When you call `start(timerName)` the timer is started and it is ended when you call `end(timerName)`. You can log the total time using `logTotal(timerName)`. It will log into the console if you are running it in the console or will log it in the monitor otherwise.
+When you call `start(timerName)` the timer is started and it is ended when you call `end(timerName)`. You can log the total time using `log(timerName)`. It will log into the console if you are running it in the console or will log it in the monitor otherwise.
 
 Keep in mind that if you call `start` and `end` several times with the same time name, the total time will be added. You can clear a timer using `clear(timerName)` or clear all timers using `clear()`.
 

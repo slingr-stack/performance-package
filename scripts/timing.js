@@ -21,7 +21,7 @@ exports.end = function(name, options) {
     }
 };
 
-exports.logTotal = function(name) {
+exports.log = function(name) {
     if (typeof log == 'function') {
         log(name+': '+totals[name]);
     } else {

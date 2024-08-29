@@ -5,7 +5,7 @@ exports.getCache = function() {
     return _cache;
 };
 
-exports.clearCache = function(entity) {
+exports.clear = function(entity) {
     if (entity) {
         _cache[entity] = null;
     } else {
@@ -34,7 +34,7 @@ exports.loadCache = function(entity, indexes) {
     if (sys.utils.concurrency.tryLock(lockKey, 1)) {
         try {
             if (_cache[entity]) {
-                pkg.performance.cache.clearCache(entity);
+                pkg.performance.cache.clear(entity);
             }
             _cache[entity] = {
                 items: [],

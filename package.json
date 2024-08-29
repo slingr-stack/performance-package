@@ -9,6 +9,11 @@
             "type": "script",
             "namespace": "timing",
             "path": "/scripts/timing.js"
+        },
+        {
+            "type": "script",
+            "namespace": "cache",
+            "path": "/scripts/cache.js"
         }
     ]
 }
